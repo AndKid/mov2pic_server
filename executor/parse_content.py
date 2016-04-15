@@ -9,5 +9,6 @@ def get_movie_summary(selector):
 
 
 def get_movie_content(selector):
-    content = selector.xpath('//*[@class="post"]/text() | //*[@class="post"]/img/@src')
+    content = selector.xpath(
+        '//*[@class="post"]/text() | //*[@class="post"]/img/@src | //*[@class="d_post_content"]/text() | //*[@class="d_post_content"]/img/@src')
     return content
