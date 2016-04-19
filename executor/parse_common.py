@@ -10,4 +10,6 @@ def get_navigation(selector):
 
 def get_next_page(selector):
     next_page = selector.xpath('//a[@rel="next"]/@href')
-    return next_page[0]
+    if len(next_page) > 0:
+        return next_page[0]
+    return "null"
