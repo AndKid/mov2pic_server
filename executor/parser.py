@@ -3,6 +3,7 @@ from lxml import etree
 from parse_index import get_movie_list_title, get_movie_sort, get_movie_list
 from parse_content import get_movie_title, get_movie_summary, get_movie_content
 from parse_common import get_navigation, get_next_page
+from parse_background import get_header_background
 
 
 def parse_index(html):
@@ -24,5 +25,12 @@ def parse_content(html):
     page.update({"summary": get_movie_summary(selector)})
     page.update({"content": get_movie_content(selector)})
     page.update({"next": get_next_page(selector)})
+    return page
+
+
+def parse_background(html):
+    page = dict()
+    selector = etree.HTML(html)
+    page.update({"background": get_header_background(selector)})
     return page
 

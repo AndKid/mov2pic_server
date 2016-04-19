@@ -4,6 +4,7 @@ from flask import Response
 from flask import request
 from executor import net, parser
 import json
+import random
 
 app = Flask(__name__)
 
@@ -29,6 +30,17 @@ def content():
         url = "http://www.k165.com" + uri
     html = net.get_html_content(url)
     page = parser.parse_content(html)
+    return Response(json.dumps(page, encoding="UTF-8", ensure_ascii=False, sort_keys=True))
+
+
+@app.route('/background')
+def background():
+    number = random.randint(1, 108)
+    url_prefix = "http://www.wufafuwu.com/a/ONE_tupian/list_11_"
+    url_suffix = ".html"
+    url = url_prefix + str(number) + url_suffix
+    html = net.get_html_content(url)
+    page = parser.parse_background(html)
     return Response(json.dumps(page, encoding="UTF-8", ensure_ascii=False, sort_keys=True))
 
 
