@@ -38,8 +38,14 @@ def parse_background(html):
     return page
 
 
-def parse_foreground(html):
+def parse_bg_hdpi(html):
     page = dict()
     selector = etree.HTML(html)
-    page.update({"foreground": get_header_foreground(selector)})
+    page.update({"name": get_header_name(selector)})
+    page.update({"foreground_url": get_header_foreground_url(selector)})
     return page
+
+
+def parse_foreground(html):
+    selector = etree.HTML(html)
+    return get_header_foreground(selector)

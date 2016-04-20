@@ -44,6 +44,27 @@ def background():
     return Response(json.dumps(page, encoding="UTF-8", ensure_ascii=False, sort_keys=True))
 
 
+@app.route('/bg_hdpi')
+def bg_hdpi():
+    number = random.randint(1, 107)
+    url_prefix = "http://www.wufafuwu.com/a/ONE_tupian/list_11_"
+    url_suffix = ".html"
+    url = url_prefix + str(number) + url_suffix
+    html = net.get_html_content(url)
+    page = parserme.parse_background(html)
+    foregrounds = []
+    for foreground_url in page.get("foreground_url"):
+        foregrounds.append(foreground_internal(foreground_url))
+    page.update({"background": foregrounds})
+    return Response(json.dumps(page, encoding="UTF-8", ensure_ascii=False, sort_keys=True))
+
+
+def foreground_internal(url):
+    html = net.get_html_content(url)
+    page = parserme.parse_foreground(html)
+    return page
+
+
 @app.route('/foreground')
 def foreground():
     url = request.args.get("url", "")
@@ -52,4 +73,4 @@ def foreground():
     return Response(json.dumps(page, encoding="UTF-8", ensure_ascii=False, sort_keys=True))
 
 
-# app.run(host='127.0.0.1', debug=True)
+#app.run(host='127.0.0.1', debug=True)
