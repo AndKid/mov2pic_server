@@ -1,5 +1,4 @@
 # mov2pic_server
-======
 利用python的Flask框架部署的server，用于爬取All In ONE http://www.wufafuwu.com/a/ONE_tupian/ 和图解电影网 http://www.k165.com/ 的内容，以json格式返回，客户端程序 [mov2pic_client](https://github.com/AndKid/mov2pic_client)
 链接对应关系
 ------------
