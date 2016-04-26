@@ -34,3 +34,6 @@ supervisorctl -c supervisor.conf reload                    重新载入 配置�
 supervisorctl -c supervisor.conf start [all]|[appname]     启动指定/所有 supervisor管理的程序进程
 supervisorctl -c supervisor.conf stop [all]|[appname]      关闭指定/所有 supervisor管理的程序进程
 ```
+博客链接
+------------
+[Mov2pic Server Introduction](http://andkid.github.io/2016/04/25/mov2pic_server/)
